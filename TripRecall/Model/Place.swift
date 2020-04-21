@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class Place {
     var place_id: String
     var place_name: String
     var place_location: String?
+    var place_image: UIImage?
     
     init(place_id: String, place_name: String, place_location: String?) {
         self.place_id = place_id

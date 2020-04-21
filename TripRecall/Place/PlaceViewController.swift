@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import GooglePlaces
+import MaterialComponents.MaterialButtons_Theming
 
 class PlaceViewController: UIViewController {
     
@@ -17,10 +18,12 @@ class PlaceViewController: UIViewController {
     @IBOutlet weak var placeDetailView: UIView!
     @IBOutlet weak var PlaceNameLabel: UILabel!
     @IBOutlet weak var placeLocationLabel: UILabel!
+    @IBOutlet weak var btn: MDCButton!
     
     var placesClient: GMSPlacesClient!
     var action: String?
     var place_id: String!
+    var placeObj: Place?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,7 @@ class PlaceViewController: UIViewController {
         getPlaceDetails(placeID: place_id) { (place, error) in
             if let place = place {
                 self.PlaceNameLabel.text = place.name!
+                self.placeObj = Place(place_id: self.place_id, place_name: place.name!, place_location: nil)
                 
                 // Get the metadata for the first photo in the place photo metadata list.
                 let photoMetadata: GMSPlacePhotoMetadata = place.photos![0]
@@ -45,6 +49,7 @@ class PlaceViewController: UIViewController {
                     return
                   } else {
                     // Display the first image and its attributions.
+                    self.placeObj?.place_image = photo
                     self.imageView?.image = photo
                   }
                 })
@@ -53,12 +58,25 @@ class PlaceViewController: UIViewController {
         
         // Setting up a view
         setupView()
+        btn.isHidden = true
+        if let _ = action {
+            btn.isHidden = false
+            btn.setTitle("Add Place to Trip", for: .normal)
+            let containerScheme = MDCContainerScheme()
+            btn.applyContainedTheme(withScheme: containerScheme)
+            btn.backgroundColor = UIColor(rgb: 0x0a173d)
+
+            self.placeDetailView.addSubview(btn)
+            btn.snp.makeConstraints { (make) in
+                make.top.equalTo(placeLocationLabel.snp.bottom).offset(10)
+            }
+        }
     }
     
     // MARK: - Private Methods
     
     private func setupView() {
-        imageView.contentMode = .scaleAspectFit
+//        imageView.contentMode = .scaleAspectFit
         
         topView.snp.makeConstraints() { (make) in
             make.left.top.equalTo(0)
@@ -101,5 +119,14 @@ class PlaceViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Actions
+    @IBAction func addTripButtonAction(_ sender: Any) {
+        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "AddTripViewController") as! AddTripViewController
+        destVC.place = placeObj
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    
 
 }

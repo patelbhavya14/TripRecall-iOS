@@ -15,6 +15,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     let token = GMSAutocompleteSessionToken.init()
     @IBOutlet weak var searchBar: UISearchBar!
     var searchResults:[Place] = []
+    var action: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +91,14 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         return 70
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedPlace = searchResults[indexPath.row]
+        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "PlaceViewController") as! PlaceViewController
+        destVC.place_id = selectedPlace.place_id
+        destVC.action = self.action
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -133,7 +142,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         
         switch(segue.identifier ?? "") {
             case "SearchPlaceDisplay":
-                guard let trainDetailViewController = segue.destination as? PlaceViewController else {
+                guard let placeDetailViewController = segue.destination as? PlaceViewController else {
                     fatalError("Unexpected destination: \(segue.destination)")
                 }
                 guard let selectedPlaceCell = sender as? SearchTableViewCell else {
@@ -145,7 +154,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                 }
                  
                 let selectedPlace = searchResults[indexPath.row]
-                trainDetailViewController.place_id = selectedPlace.place_id
+                placeDetailViewController.place_id = selectedPlace.place_id
+                placeDetailViewController.action = self.action
             default:
                 fatalError("Unexpected Segue Identifier;")
         }
