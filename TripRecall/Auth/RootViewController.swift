@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialTabs
 import SnapKit
 import MaterialComponents.MaterialButtons_Theming
-import MaterialComponents.MaterialActivityIndicator
-import MaterialComponents.MaterialDialogs
 
 class RootViewController: UIViewController {
     @IBOutlet weak var emailText: MDCOutlinedTextField!
@@ -36,12 +33,11 @@ class RootViewController: UIViewController {
         
         headingView.layer.masksToBounds = false
         headingView.layer.cornerRadius = 20
+        headingView.backgroundColor = UIColor(rgb: 0xe9e9e9)
         
         loginView.layer.cornerRadius = 20
-        loginView.layer.shadowColor = UIColor.black.cgColor
-        loginView.layer.shadowOpacity = 1
-        loginView.layer.shadowRadius = 10
-        loginView.layer.masksToBounds = true
+        let searchLayer = loginView.layer as! MDCShadowLayer
+        searchLayer.elevation = ShadowElevation(10)
         
         emailText.label.text = "Email"
         emailText.setOutlineColor(UIColor(rgb: 0x0a173d), for: .editing)
@@ -85,7 +81,6 @@ class RootViewController: UIViewController {
     }
     
     private func setupView() {
-        
         imageView.snp.makeConstraints() { (make) in
             make.left.topMargin.equalTo(-2)
             make.right.equalTo(0)

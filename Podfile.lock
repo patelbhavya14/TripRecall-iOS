@@ -47,6 +47,14 @@ PODS:
   - "MaterialComponents/Buttons+TypographyThemer (108.1.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Typography
+  - MaterialComponents/Cards (108.1.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
   - MaterialComponents/Dialogs (108.1.0):
     - MaterialComponents/Buttons
     - MaterialComponents/Elevation
@@ -68,6 +76,9 @@ PODS:
   - MaterialComponents/private/Application (108.1.0)
   - MaterialComponents/private/Color (108.1.0):
     - MaterialComponents/Availability
+  - MaterialComponents/private/Icons/Base (108.1.0)
+  - MaterialComponents/private/Icons/ic_check_circle (108.1.0):
+    - MaterialComponents/private/Icons/Base
   - MaterialComponents/private/KeyboardWatcher (108.1.0):
     - MaterialComponents/private/Application
   - MaterialComponents/private/Math (108.1.0)
@@ -183,6 +194,7 @@ DEPENDENCIES:
   - MaterialComponents/ActivityIndicator
   - MaterialComponents/BottomNavigation
   - "MaterialComponents/Buttons+Theming"
+  - MaterialComponents/Cards
   - MaterialComponents/Dialogs
   - MaterialComponents/ShadowElevations
   - MaterialComponents/Tabs
@@ -213,6 +225,6 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 88927ee8f077cf5086677a8d07bdcb1dff941bd2
+PODFILE CHECKSUM: 81c97c507286cdec78f3e622c3964db655ebe465
 
 COCOAPODS: 1.9.1

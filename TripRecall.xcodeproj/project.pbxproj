@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA8626A3A1F6E58ADA544309 /* Pods_TripRecall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA994F76E5724F51CF9429B /* Pods_TripRecall.framework */; };
 		EA0497BC244B750A0051AA33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0497BB244B750A0051AA33 /* AppDelegate.swift */; };
 		EA0497C0244B750A0051AA33 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0497BF244B750A0051AA33 /* FirstViewController.swift */; };
 		EA0497C2244B750A0051AA33 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0497C1244B750A0051AA33 /* SecondViewController.swift */; };
@@ -14,16 +15,24 @@
 		EA0497C7244B750E0051AA33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0497C6244B750E0051AA33 /* Assets.xcassets */; };
 		EA0497CA244B750E0051AA33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0497C8244B750E0051AA33 /* LaunchScreen.storyboard */; };
 		EA0497D5244B750E0051AA33 /* TripRecallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0497D4244B750E0051AA33 /* TripRecallTests.swift */; };
+		EA2DD1D8244D57EE003AD610 /* ShadowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DD1D7244D57EE003AD610 /* ShadowUIView.swift */; };
+		EA2DD1DA244D6034003AD610 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DD1D9244D6034003AD610 /* Trip.swift */; };
+		EA8DAF1F244DE58800B19723 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8DAF1E244DE58800B19723 /* Font.swift */; };
+		EA8DAF21244DF11F00B19723 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8DAF20244DF11F00B19723 /* SearchTableViewController.swift */; };
 		EAA4D619244CFCAD00B08B6C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4D618244CFCAD00B08B6C /* Errors.swift */; };
 		EAA4D61D244D1D1F00B08B6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4D61C244D1D1F00B08B6C /* HomeViewController.swift */; };
 		EAA4D61F244D212700B08B6C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4D61E244D212700B08B6C /* Navigation.swift */; };
+		EAAD4979244E7957004D93D0 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD4978244E7957004D93D0 /* Place.swift */; };
+		EAAD497B244E7D66004D93D0 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD497A244E7D66004D93D0 /* SearchTableViewCell.swift */; };
+		EAAD497D244E81C2004D93D0 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD497C244E81C2004D93D0 /* PlaceViewController.swift */; };
+		EAAD4980244E8B66004D93D0 /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD497F244E8B66004D93D0 /* AddTripViewController.swift */; };
 		EAAE676B244BD1F900E54537 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE676A244BD1F900E54537 /* RootViewController.swift */; };
 		EAE7F4B9244C9B83009D5F67 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4B8244C9B83009D5F67 /* RegisterViewController.swift */; };
 		EAE7F4BC244CAD67009D5F67 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4BB244CAD67009D5F67 /* UIColorExtensions.swift */; };
 		EAE7F4BF244CB84B009D5F67 /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4BE244CB84B009D5F67 /* APIData.swift */; };
-		EAE7F4C2244CD79E009D5F67 /* TripRecall.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4C1244CD79E009D5F67 /* TripRecall.swift */; };
 		EAE7F4C4244CD7A8009D5F67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4C3244CD7A8009D5F67 /* User.swift */; };
 		EAE7F4C6244CEE21009D5F67 /* JSONDecoderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4C5244CEE21009D5F67 /* JSONDecoderExtensions.swift */; };
+		EAF7722C244E5A9C00CFBA3B /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF7722B244E5A9C00CFBA3B /* TripTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +60,10 @@
 		EA0497D0244B750E0051AA33 /* TripRecallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripRecallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA0497D4244B750E0051AA33 /* TripRecallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRecallTests.swift; sourceTree = "<group>"; };
 		EA0497D6244B750E0051AA33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA2DD1D7244D57EE003AD610 /* ShadowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowUIView.swift; sourceTree = "<group>"; };
+		EA2DD1D9244D6034003AD610 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		EA8DAF1E244DE58800B19723 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		EA8DAF20244DF11F00B19723 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		EAA4D618244CFCAD00B08B6C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EAA4D61C244D1D1F00B08B6C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EAA4D61E244D212700B08B6C /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -66,15 +79,19 @@
 		EAA4D639244D2CFD00B08B6C /* MotionAnimator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MotionAnimator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA4D63B244D2CFD00B08B6C /* MotionInterchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MotionInterchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA4D63D244D2CFD00B08B6C /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAAD4978244E7957004D93D0 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		EAAD497A244E7D66004D93D0 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		EAAD497C244E81C2004D93D0 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		EAAD497F244E8B66004D93D0 /* AddTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
 		EAAE6759244BCF6400E54537 /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAE6763244BD00800E54537 /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAE676A244BD1F900E54537 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EAE7F4B8244C9B83009D5F67 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EAE7F4BB244CAD67009D5F67 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		EAE7F4BE244CB84B009D5F67 /* APIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
-		EAE7F4C1244CD79E009D5F67 /* TripRecall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRecall.swift; sourceTree = "<group>"; };
 		EAE7F4C3244CD7A8009D5F67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EAE7F4C5244CEE21009D5F67 /* JSONDecoderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderExtensions.swift; sourceTree = "<group>"; };
+		EAF7722B244E5A9C00CFBA3B /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA8626A3A1F6E58ADA544309 /* Pods_TripRecall.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,18 +167,22 @@
 		EA0497BA244B750A0051AA33 /* TripRecall */ = {
 			isa = PBXGroup;
 			children = (
+				EAAD497E244E8B37004D93D0 /* Trip */,
+				EAF7722D244E64A700CFBA3B /* Place */,
+				EA2DD1D6244D57C6003AD610 /* Custom View */,
 				EAE7F4C0244CD78C009D5F67 /* Model */,
 				EAE7F4BD244CB6CD009D5F67 /* Methods */,
 				EAE7F4BA244CAD3B009D5F67 /* Extensions */,
 				EA0497DF244B77420051AA33 /* Auth */,
 				EA0497BB244B750A0051AA33 /* AppDelegate.swift */,
+				EAA4D61C244D1D1F00B08B6C /* HomeViewController.swift */,
 				EA0497BF244B750A0051AA33 /* FirstViewController.swift */,
 				EA0497C1244B750A0051AA33 /* SecondViewController.swift */,
+				EA8DAF20244DF11F00B19723 /* SearchTableViewController.swift */,
 				EA0497C3244B750A0051AA33 /* Main.storyboard */,
 				EA0497C6244B750E0051AA33 /* Assets.xcassets */,
 				EA0497C8244B750E0051AA33 /* LaunchScreen.storyboard */,
 				EA0497CB244B750E0051AA33 /* Info.plist */,
-				EAA4D61C244D1D1F00B08B6C /* HomeViewController.swift */,
 			);
 			path = TripRecall;
 			sourceTree = "<group>";
@@ -183,11 +205,30 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		EA2DD1D6244D57C6003AD610 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				EA2DD1D7244D57EE003AD610 /* ShadowUIView.swift */,
+				EAF7722B244E5A9C00CFBA3B /* TripTableViewCell.swift */,
+				EAAD497A244E7D66004D93D0 /* SearchTableViewCell.swift */,
+			);
+			path = "Custom View";
+			sourceTree = "<group>";
+		};
+		EAAD497E244E8B37004D93D0 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD497F244E8B66004D93D0 /* AddTripViewController.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
 		EAE7F4BA244CAD3B009D5F67 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				EAE7F4BB244CAD67009D5F67 /* UIColorExtensions.swift */,
 				EAE7F4C5244CEE21009D5F67 /* JSONDecoderExtensions.swift */,
+				EA8DAF1E244DE58800B19723 /* Font.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -204,11 +245,20 @@
 		EAE7F4C0244CD78C009D5F67 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EAE7F4C1244CD79E009D5F67 /* TripRecall.swift */,
 				EAE7F4C3244CD7A8009D5F67 /* User.swift */,
 				EAA4D618244CFCAD00B08B6C /* Errors.swift */,
+				EA2DD1D9244D6034003AD610 /* Trip.swift */,
+				EAAD4978244E7957004D93D0 /* Place.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EAF7722D244E64A700CFBA3B /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD497C244E81C2004D93D0 /* PlaceViewController.swift */,
+			);
+			path = Place;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,17 +425,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0497C2244B750A0051AA33 /* SecondViewController.swift in Sources */,
+				EAAD4979244E7957004D93D0 /* Place.swift in Sources */,
 				EAE7F4B9244C9B83009D5F67 /* RegisterViewController.swift in Sources */,
+				EA8DAF1F244DE58800B19723 /* Font.swift in Sources */,
 				EA0497C0244B750A0051AA33 /* FirstViewController.swift in Sources */,
 				EAE7F4BC244CAD67009D5F67 /* UIColorExtensions.swift in Sources */,
+				EA2DD1D8244D57EE003AD610 /* ShadowUIView.swift in Sources */,
 				EAAE676B244BD1F900E54537 /* RootViewController.swift in Sources */,
+				EAAD497D244E81C2004D93D0 /* PlaceViewController.swift in Sources */,
+				EAF7722C244E5A9C00CFBA3B /* TripTableViewCell.swift in Sources */,
+				EAAD497B244E7D66004D93D0 /* SearchTableViewCell.swift in Sources */,
+				EA8DAF21244DF11F00B19723 /* SearchTableViewController.swift in Sources */,
 				EAE7F4C4244CD7A8009D5F67 /* User.swift in Sources */,
 				EAE7F4C6244CEE21009D5F67 /* JSONDecoderExtensions.swift in Sources */,
+				EAAD4980244E8B66004D93D0 /* AddTripViewController.swift in Sources */,
 				EAA4D619244CFCAD00B08B6C /* Errors.swift in Sources */,
-				EAE7F4C2244CD79E009D5F67 /* TripRecall.swift in Sources */,
 				EAA4D61F244D212700B08B6C /* Navigation.swift in Sources */,
 				EAE7F4BF244CB84B009D5F67 /* APIData.swift in Sources */,
 				EA0497BC244B750A0051AA33 /* AppDelegate.swift in Sources */,
+				EA2DD1DA244D6034003AD610 /* Trip.swift in Sources */,
 				EAA4D61D244D1D1F00B08B6C /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
