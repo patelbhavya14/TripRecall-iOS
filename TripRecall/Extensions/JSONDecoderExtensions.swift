@@ -15,3 +15,11 @@ extension JSONDecoder {
         self.dateDecodingStrategy = .formatted(dateFormatter)
     }
 }
+
+extension JSONEncoder {
+    func setDateFormat() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateEncodingStrategy = .formatted(dateFormatter)
+    }
+}
