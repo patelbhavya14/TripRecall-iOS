@@ -7,13 +7,19 @@
 //
 
 import Foundation
+import GooglePlaces
 
 class Trip: Codable {
     var _id: String?
     var trip_name: String
-    var place_id: String
+    var place_id: String {
+        didSet(newTotalSteps) {
+            print("About to set totalSteps to \(newTotalSteps)")
+        }
+    }
     var start_date: Date
     var end_date: Date
+    var attractions: [Attraction]?
     var created_ts: Date?
     var updated_ts: Date?
     
@@ -29,5 +35,34 @@ class Trip: Codable {
         dateFormatter.dateFormat = "d MMM y"
         
         return "\(dateFormatter.string(from: self.start_date)) - \(dateFormatter.string(from: self.end_date))"
+    }
+    
+    func getDateAndDay() -> [(String, String)] {
+        var startDate = self.start_date
+        let calendar = Calendar.current
+
+        var ranges = [(String, String)]()
+        var idx = 1
+        
+        while startDate <= self.end_date {
+            ranges.append(("Day \(idx)", startDate.toString()))
+            
+            startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
+            idx += 1
+        }
+        
+        return ranges
+    }
+    
+    func getAttractionByDate(date: String) -> [Attraction] {
+        var att: [Attraction] = []
+
+        for a in attractions! {
+            if a.date.toString() == date {
+                att.append(a)
+            }
+        }
+        
+        return att
     }
 }

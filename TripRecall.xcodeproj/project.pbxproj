@@ -17,6 +17,10 @@
 		EA0497D5244B750E0051AA33 /* TripRecallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0497D4244B750E0051AA33 /* TripRecallTests.swift */; };
 		EA2DD1D8244D57EE003AD610 /* ShadowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DD1D7244D57EE003AD610 /* ShadowUIView.swift */; };
 		EA2DD1DA244D6034003AD610 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DD1D9244D6034003AD610 /* Trip.swift */; };
+		EA33B137244F558D005F883C /* AttractionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33B136244F558D005F883C /* AttractionViewController.swift */; };
+		EA33B139244F7EA8005F883C /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33B138244F7EA8005F883C /* Attraction.swift */; };
+		EA33B13B244FA104005F883C /* AttractionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33B13A244FA104005F883C /* AttractionTableViewCell.swift */; };
+		EA6415BF2451FC5300E0942D /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6415BE2451FC5300E0942D /* CalenderViewController.swift */; };
 		EA8DAF1F244DE58800B19723 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8DAF1E244DE58800B19723 /* Font.swift */; };
 		EA8DAF21244DF11F00B19723 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8DAF20244DF11F00B19723 /* SearchTableViewController.swift */; };
 		EAA4D619244CFCAD00B08B6C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4D618244CFCAD00B08B6C /* Errors.swift */; };
@@ -29,7 +33,11 @@
 		EAAD4982244E8E2B004D93D0 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD4981244E8E2B004D93D0 /* ThirdViewController.swift */; };
 		EAAD4984244E9EE1004D93D0 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD4983244E9EE1004D93D0 /* DateExtensions.swift */; };
 		EAAE676B244BD1F900E54537 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE676A244BD1F900E54537 /* RootViewController.swift */; };
+		EAAE730C2450B8380073A360 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE730B2450B8380073A360 /* NoteViewController.swift */; };
+		EABE2A2A2450C09A00AF36E2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE2A292450C09A00AF36E2 /* Note.swift */; };
 		EAC8F84C244F4F7D0040EFE1 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC8F84B244F4F7D0040EFE1 /* TripViewController.swift */; };
+		EAE268522452654D00FF84D7 /* GetPlaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE268512452654D00FF84D7 /* GetPlaceDetail.swift */; };
+		EAE268542452776D00FF84D7 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE268532452776D00FF84D7 /* Wishlist.swift */; };
 		EAE7F4B9244C9B83009D5F67 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4B8244C9B83009D5F67 /* RegisterViewController.swift */; };
 		EAE7F4BC244CAD67009D5F67 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4BB244CAD67009D5F67 /* UIColorExtensions.swift */; };
 		EAE7F4BF244CB84B009D5F67 /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE7F4BE244CB84B009D5F67 /* APIData.swift */; };
@@ -65,6 +73,10 @@
 		EA0497D6244B750E0051AA33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA2DD1D7244D57EE003AD610 /* ShadowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowUIView.swift; sourceTree = "<group>"; };
 		EA2DD1D9244D6034003AD610 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		EA33B136244F558D005F883C /* AttractionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionViewController.swift; sourceTree = "<group>"; };
+		EA33B138244F7EA8005F883C /* Attraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
+		EA33B13A244FA104005F883C /* AttractionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionTableViewCell.swift; sourceTree = "<group>"; };
+		EA6415BE2451FC5300E0942D /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		EA8DAF1E244DE58800B19723 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		EA8DAF20244DF11F00B19723 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		EAA4D618244CFCAD00B08B6C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -91,7 +103,11 @@
 		EAAE6759244BCF6400E54537 /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAE6763244BD00800E54537 /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAE676A244BD1F900E54537 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		EAAE730B2450B8380073A360 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		EABE2A292450C09A00AF36E2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		EAC8F84B244F4F7D0040EFE1 /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
+		EAE268512452654D00FF84D7 /* GetPlaceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlaceDetail.swift; sourceTree = "<group>"; };
+		EAE268532452776D00FF84D7 /* Wishlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
 		EAE7F4B8244C9B83009D5F67 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EAE7F4BB244CAD67009D5F67 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		EAE7F4BE244CB84B009D5F67 /* APIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
@@ -218,6 +234,7 @@
 				EA2DD1D7244D57EE003AD610 /* ShadowUIView.swift */,
 				EAF7722B244E5A9C00CFBA3B /* TripTableViewCell.swift */,
 				EAAD497A244E7D66004D93D0 /* SearchTableViewCell.swift */,
+				EA33B13A244FA104005F883C /* AttractionTableViewCell.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -227,6 +244,9 @@
 			children = (
 				EAAD497F244E8B66004D93D0 /* AddTripViewController.swift */,
 				EAC8F84B244F4F7D0040EFE1 /* TripViewController.swift */,
+				EA33B136244F558D005F883C /* AttractionViewController.swift */,
+				EAAE730B2450B8380073A360 /* NoteViewController.swift */,
+				EA6415BE2451FC5300E0942D /* CalenderViewController.swift */,
 			);
 			path = Trip;
 			sourceTree = "<group>";
@@ -247,6 +267,7 @@
 			children = (
 				EAE7F4BE244CB84B009D5F67 /* APIData.swift */,
 				EAA4D61E244D212700B08B6C /* Navigation.swift */,
+				EAE268512452654D00FF84D7 /* GetPlaceDetail.swift */,
 			);
 			path = Methods;
 			sourceTree = "<group>";
@@ -258,6 +279,9 @@
 				EAA4D618244CFCAD00B08B6C /* Errors.swift */,
 				EA2DD1D9244D6034003AD610 /* Trip.swift */,
 				EAAD4978244E7957004D93D0 /* Place.swift */,
+				EA33B138244F7EA8005F883C /* Attraction.swift */,
+				EABE2A292450C09A00AF36E2 /* Note.swift */,
+				EAE268532452776D00FF84D7 /* Wishlist.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -433,7 +457,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE268542452776D00FF84D7 /* Wishlist.swift in Sources */,
+				EA6415BF2451FC5300E0942D /* CalenderViewController.swift in Sources */,
+				EAAE730C2450B8380073A360 /* NoteViewController.swift in Sources */,
 				EAAD4984244E9EE1004D93D0 /* DateExtensions.swift in Sources */,
+				EA33B13B244FA104005F883C /* AttractionTableViewCell.swift in Sources */,
 				EA0497C2244B750A0051AA33 /* SecondViewController.swift in Sources */,
 				EAAD4979244E7957004D93D0 /* Place.swift in Sources */,
 				EAE7F4B9244C9B83009D5F67 /* RegisterViewController.swift in Sources */,
@@ -445,18 +473,22 @@
 				EAC8F84C244F4F7D0040EFE1 /* TripViewController.swift in Sources */,
 				EAAD4982244E8E2B004D93D0 /* ThirdViewController.swift in Sources */,
 				EAAD497D244E81C2004D93D0 /* PlaceViewController.swift in Sources */,
+				EAE268522452654D00FF84D7 /* GetPlaceDetail.swift in Sources */,
 				EAF7722C244E5A9C00CFBA3B /* TripTableViewCell.swift in Sources */,
 				EAAD497B244E7D66004D93D0 /* SearchTableViewCell.swift in Sources */,
 				EA8DAF21244DF11F00B19723 /* SearchTableViewController.swift in Sources */,
 				EAE7F4C4244CD7A8009D5F67 /* User.swift in Sources */,
+				EABE2A2A2450C09A00AF36E2 /* Note.swift in Sources */,
 				EAE7F4C6244CEE21009D5F67 /* JSONDecoderExtensions.swift in Sources */,
 				EAAD4980244E8B66004D93D0 /* AddTripViewController.swift in Sources */,
 				EAA4D619244CFCAD00B08B6C /* Errors.swift in Sources */,
 				EAA4D61F244D212700B08B6C /* Navigation.swift in Sources */,
 				EAE7F4BF244CB84B009D5F67 /* APIData.swift in Sources */,
 				EA0497BC244B750A0051AA33 /* AppDelegate.swift in Sources */,
+				EA33B139244F7EA8005F883C /* Attraction.swift in Sources */,
 				EA2DD1DA244D6034003AD610 /* Trip.swift in Sources */,
 				EAA4D61D244D1D1F00B08B6C /* HomeViewController.swift in Sources */,
+				EA33B137244F558D005F883C /* AttractionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+class Note: Codable {
+    var _id: String?
+    var detail: String
+    
+    init(detail: String) {
+        self.detail = detail
+    }
+}

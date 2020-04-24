@@ -28,16 +28,32 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardHeaderLabel: UILabel!
     @IBOutlet weak var cardDateLabel: UILabel!
+    @IBOutlet weak var addTripButton: MDCButton!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var placesClient: GMSPlacesClient!
+    var cardTrip: Trip?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        self.tabBarController?.tabBar.isHidden = false
+        
         placesClient = GMSPlacesClient.shared()
         searchBar.delegate = self
+        
+        // Card image fit to card
+        cardImage.translatesAutoresizingMaskIntoConstraints = false
+        cardImage.contentMode = .scaleAspectFill
+        cardImage.clipsToBounds = true
+        cardImage.layer.masksToBounds = true
+        cardImage.layer.isOpaque = false
+        
+        // Set button
+        let containerScheme = MDCContainerScheme()
+        addTripButton.applyContainedTheme(withScheme: containerScheme)
+        addTripButton.backgroundColor = UIColor(rgb: 0x0a173d)
         setupView()
         
         getPlaceDetails(placeID: "ChIJGzE9DS1l44kRoOhiASS_fHg") { (place, error) in
@@ -62,13 +78,14 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
             }
         }
         
-        // Do any additional setup after loading the view.
         nameLabel.text = "Hello, \(appDelegate.user!.username!)."
         
         getTrips()
         
         let ongoingTrips = self.appDelegate.user?.getOngoingTrips()
         let futureTrips = self.appDelegate.user?.getFutureTrips()
+        
+        tripsView.isHidden = true
         
         if (ongoingTrips!.count) == 0 {
             tripMsgLabel.text = "Sadly, you're not travelling today."
@@ -83,23 +100,34 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
         }
         
         if let text = cardHeading.text {
+            tripsView.isHidden = false
             if text == "Ongoing Trip" {
                 setTripCard(placeID: ongoingTrips![0].place_id)
-                self.cardDateLabel.text = ongoingTrips![0].getTripDates()
+                cardTrip = ongoingTrips![0]
+                self.cardDateLabel.text = cardTrip?.getTripDates()
             }
             if text == "Next Trip" {
                 setTripCard(placeID: futureTrips![0].place_id)
-                self.cardDateLabel.text = futureTrips![0].getTripDates()
+                cardTrip = futureTrips![0]
+                self.cardDateLabel.text = cardTrip?.getTripDates()
             }
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "SearchTableViewController", bundle: Bundle.main)
         let destVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
 //
 //        destVC.modalPresentationStyle = UIModalPresentationStyle.fullScreen
@@ -107,8 +135,6 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
 //
 //        self.present(destVC, animated: true, completion: nil)
         searchBar.endEditing(true)
-//        let vc = SearchTableViewController()
-//
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     
@@ -165,15 +191,8 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
         searchBar.placeholder = "Where do you want to go?"
         searchBar.searchTextField.backgroundColor = UIColor(rgb: 0xe9e9e9)
         
-        tripsView.layer.masksToBounds = false
-        tripsView.layer.cornerRadius = 30
-        
         let searchLayer = searchView.layer as! MDCShadowLayer
         searchLayer.elevation = ShadowElevation(5)
-        
-        let tripCardLayer = cardView.layer as! MDCShadowLayer
-        tripCardLayer.elevation = ShadowElevation(5)
-        
         
         topView.snp.makeConstraints() { (make) in
             make.left.top.equalTo(0)
@@ -229,7 +248,8 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
             make.top.equalTo(todayTripView.snp.bottom).offset(10)
             make.left.equalTo(15)
             make.right.equalTo(-15)
-//            make.bottom.equalTo(self.tabBarController!.tabBar.snp.top).offset(-10)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-10)
+
         }
         
         cardHeading.snp.makeConstraints { (make) in
@@ -238,26 +258,31 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
         
         cardView.snp.makeConstraints { (make) in
             make.top.equalTo(cardHeading.snp.bottom).offset(10)
-            make.left.equalTo(10)
-            make.right.equalTo(-10)
-            make.height.equalTo(280)
+            make.left.right.equalTo(0)
+            make.height.equalTo(120)
         }
         
         cardImage.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(0)
-            make.height.equalTo(220)
+            make.top.left.bottom.equalTo(0)
+            make.width.equalTo(140)
         }
-        
+
         cardHeaderLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(cardImage.snp.bottom).offset(5)
+            make.left.equalTo(cardImage.snp.right).offset(10)
+            make.top.equalTo(10)
             make.right.equalTo(0)
-            make.left.equalTo(5)
         }
         
         cardDateLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(cardImage.snp.right).offset(10)
             make.top.equalTo(cardHeaderLabel.snp.bottom).offset(5)
             make.right.equalTo(0)
-            make.left.equalTo(5)
+        }
+        
+        addTripButton.snp.makeConstraints { (make) in
+            make.top.equalTo(cardView.snp.bottom).offset(20)
+            make.left.right.equalTo(0)
+            make.height.equalTo(50)
         }
     }
     
@@ -284,4 +309,21 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
          }
          group.wait()
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func cardTap(_ sender: UITapGestureRecognizer) {
+        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "AttractionViewController") as! AttractionViewController
+        destVC.trip = cardTrip
+        destVC.tabNo = 0
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    @IBAction func addTripButtonAction(_ sender: MDCButton) {
+        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
+        destVC.action = "AddTrip"
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    
 }

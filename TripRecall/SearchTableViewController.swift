@@ -21,6 +21,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         searchBar.delegate = self
+        searchBar.becomeFirstResponder()
+        
         placesClient = GMSPlacesClient.shared()
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -33,6 +35,10 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -41,7 +47,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
 
         self.placesClient?.findAutocompletePredictions(fromQuery: searchText,
                                                   filter: filter,

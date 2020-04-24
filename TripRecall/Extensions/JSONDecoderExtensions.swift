@@ -22,4 +22,8 @@ extension JSONEncoder {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         self.dateEncodingStrategy = .formatted(dateFormatter)
     }
+    
+    func setEpochDateFormat() {
+        self.dateEncodingStrategy = .secondsSince1970
+    }
 }

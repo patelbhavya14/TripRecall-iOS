@@ -19,5 +19,8 @@ target 'TripRecall' do
   pod 'MaterialComponents/ShadowElevations'
   pod 'MaterialComponents/BottomNavigation'
   pod 'GooglePlaces'
+  pod 'GoogleMaps'
   pod 'MaterialComponents/Cards'
+  pod 'MaterialComponents/BottomSheet'
+  pod 'FSCalendar'
 end

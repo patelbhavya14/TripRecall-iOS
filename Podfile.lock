@@ -1,5 +1,10 @@
 PODS:
+  - FSCalendar (2.8.1)
+  - GoogleMaps (3.8.0):
+    - GoogleMaps/Maps (= 3.8.0)
   - GoogleMaps/Base (3.8.0)
+  - GoogleMaps/Maps (3.8.0):
+    - GoogleMaps/Base
   - GooglePlaces (3.8.0):
     - GoogleMaps/Base (= 3.8.0)
   - MaterialComponents/ActivityIndicator (108.1.0):
@@ -20,6 +25,14 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
+  - MaterialComponents/BottomSheet (108.1.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
   - MaterialComponents/Buttons (108.1.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
@@ -190,9 +203,12 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - FSCalendar
+  - GoogleMaps
   - GooglePlaces
   - MaterialComponents/ActivityIndicator
   - MaterialComponents/BottomNavigation
+  - MaterialComponents/BottomSheet
   - "MaterialComponents/Buttons+Theming"
   - MaterialComponents/Cards
   - MaterialComponents/Dialogs
@@ -206,6 +222,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - FSCalendar
     - GoogleMaps
     - GooglePlaces
     - MaterialComponents
@@ -216,6 +233,7 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
+  FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   GoogleMaps: 7c8d66d70e4e8c300f43a7219d8fdaad7b325a9a
   GooglePlaces: d5f70c3e9e427964fdeca1301a665d276ccd8754
   MaterialComponents: d1c85bdf01caed6b6e11e78731e71e2d55d331da
@@ -225,6 +243,6 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 81c97c507286cdec78f3e622c3964db655ebe465
+PODFILE CHECKSUM: dfd20e25c8a3e55c10e9b77399ebc85bcfbf8503
 
 COCOAPODS: 1.9.1

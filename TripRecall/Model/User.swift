@@ -16,6 +16,7 @@ class User: Codable {
     var created_at: Date?
     var updated_at: Date?
     var trips: [Trip]?
+    var wishlists: [Wishlist]?
     
     init(email: String) {
         self.email = email
