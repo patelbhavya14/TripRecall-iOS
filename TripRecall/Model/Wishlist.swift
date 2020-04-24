@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class Wishlist: Codable {
+    var _id: String
+    var place_id: String
+    var created_at: Date?
+    var updated_at: Date?
+}

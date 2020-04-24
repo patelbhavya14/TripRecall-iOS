@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var placeNameLabel: UILabel!
@@ -15,6 +16,17 @@ class SearchTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        placeNameLabel.snp.makeConstraints { (make) in
+            make.top.left.equalTo(10)
+            make.right.equalTo(0)
+        }
+        
+        placeLocationLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(placeNameLabel.snp.bottom).offset(10)
+            make.left.equalTo(10)
+            make.right.equalTo(0)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

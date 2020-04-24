@@ -10,31 +10,35 @@ import UIKit
 import GooglePlaces
 import SnapKit
 import MaterialComponents.MaterialCards
+import MaterialComponents.MaterialTabs
 
-class SecondViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
+class SecondViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, MDCTabBarDelegate {
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var pastHeadingView: UIView!
-    @IBOutlet weak var pastHeadingLabel: UILabel!
+    @IBOutlet weak var tripsView: UIView!
+    @IBOutlet weak var tabView: UIView!
     @IBOutlet weak var tripTableView: UITableView!
     
-    
     var placesClient: GMSPlacesClient!
-    let locationNames = ["Hawaii Resort", "Mountain Expedition", "Scuba Diving"]
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var trips: [Trip] = []
+    let tabBar = MDCTabBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
         placesClient = GMSPlacesClient.shared()
-//        searchBar.delegate = self
+        
         setupView()
+        
+//        tabBar.frame = view.bounds
+        tabBar.delegate = self
         
         getPlaceDetails(placeID: "ChIJGzE9DS1l44kRoOhiASS_fHg") { (place, error) in
             if let place = place {
@@ -61,6 +65,19 @@ class SecondViewController: UIViewController , UITableViewDelegate, UITableViewD
         trips = self.appDelegate.user!.getPastTrips()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     // MARK: - Private Methods
     
     private func getPlaceDetails(placeID: String, completion: @escaping (GMSPlace?, Error?) -> Void) {
@@ -84,6 +101,29 @@ class SecondViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     private func setupView() {
+        // Add Tabbar
+        tabBar.frame = view.bounds
+        tabBar.items = [
+            UITabBarItem(title: "Past Trips", image: nil, tag: 0),
+            UITabBarItem(title: "Next Trips", image: nil, tag: 1),
+        ]
+        tabBar.itemAppearance = .titles
+        tabBar.barTintColor = UIColor(rgb: 0x0a173d)
+        tabBar.tintColor = .white
+        tabBar.setTitleColor(.white, for: .normal)
+        tabBar.setTitleColor(.white, for: .selected)
+        tabBar.displaysUppercaseTitles = false
+        tabBar.alignment = .justified
+        tabBar.sizeToFit()
+        tabView.addSubview(tabBar)
+        
+        let tabLayer = tabView.layer as! MDCShadowLayer
+        tabLayer.elevation = ShadowElevation(5)
+        
+        // Set tableview seperator
+        tripTableView.separatorStyle = .none
+        tripTableView.showsVerticalScrollIndicator = false
+        
         topView.snp.makeConstraints() { (make) in
             make.left.top.equalTo(0)
             make.right.equalTo(0)
@@ -104,15 +144,24 @@ class SecondViewController: UIViewController , UITableViewDelegate, UITableViewD
             make.left.equalTo(15)
         }
         
-        pastHeadingView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(10)
-            make.top.equalTo(topView.snp.bottom).offset(10)
+        tabView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(0)
+            make.top.equalTo(topView.snp.bottom).offset(0)
+            make.height.equalTo(50)
+        }
+
+        tripsView.snp.makeConstraints { (make) in
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+            make.top.equalTo(tabView.snp.bottom).offset(10)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-10)
         }
         
-        pastHeadingLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(0)
+        tripTableView.snp.makeConstraints { (make) in
+            make.left.right.top.equalTo(0)
+            make.bottom.equalTo(-10)
         }
-        
+
     }
     
     // MARK: - Table delegate methods
@@ -125,8 +174,29 @@ class SecondViewController: UIViewController , UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath) as! TripTableViewCell
         let trip = trips[indexPath.row]
         
+        cell.selectionStyle = .none
+        
         cell.tripNameLabel.text = trip.trip_name
         cell.tripDateLabel.text = trip.getTripDates()
+        
+        self.getPlaceDetails(placeID: trip.place_id) { (place, error) in
+            if let place = place {
+                // Get the metadata for the first photo in the place photo metadata list.
+                let photoMetadata: GMSPlacePhotoMetadata = place.photos![0]
+
+                // Call loadPlacePhoto to display the bitmap and attribution.
+                self.placesClient?.loadPlacePhoto(photoMetadata, callback: { (photo, error) -> Void in
+                  if let error = error {
+                    // TODO: Handle the error.
+                    print("Error loading photo metadata: \(error.localizedDescription)")
+                    return
+                  } else {
+                    // Display the first image and its attributions.
+                    cell.cardImage.image = photo
+                  }
+                })
+            }
+        }
         
         return cell
     }
@@ -135,6 +205,25 @@ class SecondViewController: UIViewController , UITableViewDelegate, UITableViewD
         return 100
     }
     
- 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedTrip = trips[indexPath.row]
+        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "AttractionViewController") as! AttractionViewController
+        destVC.trip = selectedTrip
+        destVC.tabNo = 1
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    // MARK: - Tab bar delegate
+    
+    func tabBar(_ tabBar: MDCTabBar, didSelect item: UITabBarItem) {
+        if item.tag == 0 {
+            trips = self.appDelegate.user!.getPastTrips()
+        } else {
+            trips = self.appDelegate.user!.getFutureTrips()
+        }
+        
+        tripTableView.reloadData()
+    }
+
 }
 

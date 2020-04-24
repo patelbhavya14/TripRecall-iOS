@@ -22,6 +22,19 @@ class ThirdViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     @IBAction func addTripButtonAction(_ sender: MDCButton) {
         let destVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
         destVC.action = "AddTrip"

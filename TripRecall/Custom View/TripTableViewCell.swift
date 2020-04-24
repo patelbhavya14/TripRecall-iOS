@@ -13,31 +13,42 @@ class TripTableViewCell: UITableViewCell {
     @IBOutlet weak var tripNameLabel: UILabel!
     @IBOutlet weak var tripDateLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var cardImage: UIImageView!
+    
+    var tripCardPressed: (() -> ()) = {}
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        cellView.backgroundColor = UIColor(rgb: 0x0a173d)
+        cardImage.translatesAutoresizingMaskIntoConstraints = false
+        cardImage.contentMode = .scaleAspectFill
+        cardImage.clipsToBounds = true
         
         cellView.snp.makeConstraints { (make) in
             make.top.equalTo(10)
             make.left.equalTo(10)
-            make.right.equalTo(-50)
-            make.height.equalTo(80)
+            make.right.equalTo(-10)
+            make.height.equalTo(120)
             make.bottom.equalTo(-10)
+        }
+        
+        cardImage.snp.makeConstraints { (make) in
+            make.top.left.bottom.equalTo(0)
+            make.height.equalTo(120)
+            make.width.equalTo(140)
         }
         
         tripNameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(10)
-            make.left.equalTo(15)
+            make.left.equalTo(cardImage.snp.right).offset(10)
             make.right.equalTo(0)
         }
         
         tripDateLabel.snp.makeConstraints { (make) in
             make.top.equalTo(tripNameLabel.snp.bottom).offset(10)
             make.right.equalTo(0)
-            make.left.equalTo(15)
+            make.left.equalTo(cardImage.snp.right).offset(10)
             make.bottom.equalTo(-10)
         }
     }
@@ -47,5 +58,7 @@ class TripTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // MARK: - Actions
 
 }

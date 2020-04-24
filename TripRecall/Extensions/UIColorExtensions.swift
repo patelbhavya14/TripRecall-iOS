@@ -18,4 +18,8 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
+    
+    func theme() -> UIColor {
+        return UIColor(rgb: 0x0a173d)
+    }
 }
