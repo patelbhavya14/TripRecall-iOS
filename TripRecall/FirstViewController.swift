@@ -43,6 +43,13 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
         placesClient = GMSPlacesClient.shared()
         searchBar.delegate = self
         
+        self.tripsView.backgroundColor = UIColor(patternImage: UIImage(named: "trips.jpg")!)
+        
+        // Fit topview image
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
         // Card image fit to card
         cardImage.translatesAutoresizingMaskIntoConstraints = false
         cardImage.contentMode = .scaleAspectFill
@@ -54,13 +61,14 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
         let containerScheme = MDCContainerScheme()
         addTripButton.applyContainedTheme(withScheme: containerScheme)
         addTripButton.backgroundColor = UIColor(rgb: 0x0a173d)
+        
         setupView()
         
         getPlaceDetails(placeID: "ChIJGzE9DS1l44kRoOhiASS_fHg") { (place, error) in
             if let place = place {
                 self.locationLabel?.text = "You're in \(place.name!)"
                 print("The selected place is: \(place.name!)")
-                
+
                 // Get the metadata for the first photo in the place photo metadata list.
                 let photoMetadata: GMSPlacePhotoMetadata = place.photos![0]
 
@@ -78,40 +86,11 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
             }
         }
         
+        
+        
         nameLabel.text = "Hello, \(appDelegate.user!.username!)."
         
-        getTrips()
-        
-        let ongoingTrips = self.appDelegate.user?.getOngoingTrips()
-        let futureTrips = self.appDelegate.user?.getFutureTrips()
-        
-        tripsView.isHidden = true
-        
-        if (ongoingTrips!.count) == 0 {
-            tripMsgLabel.text = "Sadly, you're not travelling today."
-        } else if (ongoingTrips!.count) > 0 {
-            tripMsgLabel.text = "Seems like your \(ongoingTrips![0].trip_name) going on."
-            cardHeading.text = "Ongoing Trip"
-        } else if (futureTrips!.count) == 0 {
-            tripMsgLabel.text = "You don't have any planned trips."
-        } else if (futureTrips!.count) > 0 {
-            tripMsgLabel.text = "Upcoming trip incoming \(self.appDelegate.user!.getFutureTrips().count)!"
-            cardHeading.text = "Next Trip"
-        }
-        
-        if let text = cardHeading.text {
-            tripsView.isHidden = false
-            if text == "Ongoing Trip" {
-                setTripCard(placeID: ongoingTrips![0].place_id)
-                cardTrip = ongoingTrips![0]
-                self.cardDateLabel.text = cardTrip?.getTripDates()
-            }
-            if text == "Next Trip" {
-                setTripCard(placeID: futureTrips![0].place_id)
-                cardTrip = futureTrips![0]
-                self.cardDateLabel.text = cardTrip?.getTripDates()
-            }
-        }
+        updateView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -139,6 +118,43 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
     }
     
     // MARK:- Private Methods
+    
+    private func updateView() {
+        getTrips()
+        
+        let ongoingTrips = self.appDelegate.user?.getOngoingTrips()
+        let futureTrips = self.appDelegate.user?.getFutureTrips()
+        
+        cardHeading.isHidden = true
+        cardView.isHidden = true
+        
+        if (ongoingTrips!.count) == 0 {
+            tripMsgLabel.text = "Sadly, you're not travelling today."
+        } else if (ongoingTrips!.count) > 0 {
+            tripMsgLabel.text = "Seems like your \(ongoingTrips![0].trip_name) going on."
+            cardHeading.text = "Ongoing Trip"
+        } else if (futureTrips!.count) == 0 {
+            tripMsgLabel.text = "You don't have any planned trips."
+        } else if (futureTrips!.count) > 0 {
+            tripMsgLabel.text = "Upcoming trip incoming \(self.appDelegate.user!.getFutureTrips().count)!"
+            cardHeading.text = "Next Trip"
+        }
+        
+        if cardHeading.text != "Label" {
+            cardHeading.isHidden = false
+            cardView.isHidden = false
+            if cardHeading.text == "Ongoing Trip" {
+                setTripCard(placeID: ongoingTrips![0].place_id)
+                cardTrip = ongoingTrips![0]
+                self.cardDateLabel.text = cardTrip?.getTripDates()
+            }
+            if cardHeading.text == "Next Trip" {
+                setTripCard(placeID: futureTrips![0].place_id)
+                cardTrip = futureTrips![0]
+                self.cardDateLabel.text = cardTrip?.getTripDates()
+            }
+        }
+    }
     
     private func getPlaceDetails(placeID: String, completion: @escaping (GMSPlace?, Error?) -> Void) {
 
@@ -246,19 +262,21 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
         
         tripsView.snp.makeConstraints { (make) in
             make.top.equalTo(todayTripView.snp.bottom).offset(10)
-            make.left.equalTo(15)
-            make.right.equalTo(-15)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-10)
+            make.left.right.equalTo(0)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(0)
 
         }
         
         cardHeading.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(0)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+            make.top.equalTo(0)
         }
         
         cardView.snp.makeConstraints { (make) in
             make.top.equalTo(cardHeading.snp.bottom).offset(10)
-            make.left.right.equalTo(0)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
             make.height.equalTo(120)
         }
         
@@ -281,8 +299,9 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
         
         addTripButton.snp.makeConstraints { (make) in
             make.top.equalTo(cardView.snp.bottom).offset(20)
-            make.left.right.equalTo(0)
+            make.width.equalTo(150)
             make.height.equalTo(50)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -313,9 +332,10 @@ class FirstViewController: UIViewController, UISearchBarDelegate {
     // MARK: - Actions
     
     @IBAction func cardTap(_ sender: UITapGestureRecognizer) {
-        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "AttractionViewController") as! AttractionViewController
+        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "TripInfoViewController") as! TripInfoViewController
         destVC.trip = cardTrip
         destVC.tabNo = 0
+        destVC.placeImage = cardImage.image
         self.navigationController?.pushViewController(destVC, animated: true)
     }
     

@@ -26,6 +26,17 @@
 		EAA4D619244CFCAD00B08B6C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4D618244CFCAD00B08B6C /* Errors.swift */; };
 		EAA4D61D244D1D1F00B08B6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4D61C244D1D1F00B08B6C /* HomeViewController.swift */; };
 		EAA4D61F244D212700B08B6C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA4D61E244D212700B08B6C /* Navigation.swift */; };
+		EAAD205324534FFC0004AB07 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAD205224534FFC0004AB07 /* logo.png */; };
+		EAAD2055245351730004AB07 /* traveller.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EAAD2054245351730004AB07 /* traveller.jpg */; };
+		EAAD2057245359B80004AB07 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD2056245359B80004AB07 /* NavigationViewController.swift */; };
+		EAAD2059245389260004AB07 /* traveller1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EAAD2058245389260004AB07 /* traveller1.jpg */; };
+		EAAD205B245390F60004AB07 /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD205A245390F60004AB07 /* WishlistTableViewCell.swift */; };
+		EAAD205D245392430004AB07 /* WishlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD205C245392430004AB07 /* WishlistTableViewController.swift */; };
+		EAAD205F2453BA0C0004AB07 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD205E2453BA0C0004AB07 /* ImageViewController.swift */; };
+		EAAD20622453E4D40004AB07 /* TripInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD20612453E4D40004AB07 /* TripInfoViewController.swift */; };
+		EAAD20642453F0BD0004AB07 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD20632453F0BD0004AB07 /* Photo.swift */; };
+		EAAD2066245400E10004AB07 /* trips.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EAAD2065245400E10004AB07 /* trips.jpg */; };
+		EAAD2068245402A10004AB07 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAD2067245402A10004AB07 /* logo1.png */; };
 		EAAD4979244E7957004D93D0 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD4978244E7957004D93D0 /* Place.swift */; };
 		EAAD497B244E7D66004D93D0 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD497A244E7D66004D93D0 /* SearchTableViewCell.swift */; };
 		EAAD497D244E81C2004D93D0 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD497C244E81C2004D93D0 /* PlaceViewController.swift */; };
@@ -94,6 +105,17 @@
 		EAA4D639244D2CFD00B08B6C /* MotionAnimator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MotionAnimator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA4D63B244D2CFD00B08B6C /* MotionInterchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MotionInterchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA4D63D244D2CFD00B08B6C /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAAD205224534FFC0004AB07 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		EAAD2054245351730004AB07 /* traveller.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = traveller.jpg; sourceTree = "<group>"; };
+		EAAD2056245359B80004AB07 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		EAAD2058245389260004AB07 /* traveller1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = traveller1.jpg; sourceTree = "<group>"; };
+		EAAD205A245390F60004AB07 /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
+		EAAD205C245392430004AB07 /* WishlistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistTableViewController.swift; sourceTree = "<group>"; };
+		EAAD205E2453BA0C0004AB07 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		EAAD20612453E4D40004AB07 /* TripInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoViewController.swift; sourceTree = "<group>"; };
+		EAAD20632453F0BD0004AB07 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		EAAD2065245400E10004AB07 /* trips.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trips.jpg; sourceTree = "<group>"; };
+		EAAD2067245402A10004AB07 /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
 		EAAD4978244E7957004D93D0 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		EAAD497A244E7D66004D93D0 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		EAAD497C244E81C2004D93D0 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +211,7 @@
 		EA0497BA244B750A0051AA33 /* TripRecall */ = {
 			isa = PBXGroup;
 			children = (
+				EAAD204F24534FD40004AB07 /* Resource */,
 				EAAD497E244E8B37004D93D0 /* Trip */,
 				EAF7722D244E64A700CFBA3B /* Place */,
 				EA2DD1D6244D57C6003AD610 /* Custom View */,
@@ -224,6 +247,7 @@
 			children = (
 				EAAE676A244BD1F900E54537 /* RootViewController.swift */,
 				EAE7F4B8244C9B83009D5F67 /* RegisterViewController.swift */,
+				EAAD2056245359B80004AB07 /* NavigationViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -235,8 +259,21 @@
 				EAF7722B244E5A9C00CFBA3B /* TripTableViewCell.swift */,
 				EAAD497A244E7D66004D93D0 /* SearchTableViewCell.swift */,
 				EA33B13A244FA104005F883C /* AttractionTableViewCell.swift */,
+				EAAD205A245390F60004AB07 /* WishlistTableViewCell.swift */,
 			);
 			path = "Custom View";
+			sourceTree = "<group>";
+		};
+		EAAD204F24534FD40004AB07 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD2058245389260004AB07 /* traveller1.jpg */,
+				EAAD2067245402A10004AB07 /* logo1.png */,
+				EAAD2065245400E10004AB07 /* trips.jpg */,
+				EAAD2054245351730004AB07 /* traveller.jpg */,
+				EAAD205224534FFC0004AB07 /* logo.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		EAAD497E244E8B37004D93D0 /* Trip */ = {
@@ -247,6 +284,8 @@
 				EA33B136244F558D005F883C /* AttractionViewController.swift */,
 				EAAE730B2450B8380073A360 /* NoteViewController.swift */,
 				EA6415BE2451FC5300E0942D /* CalenderViewController.swift */,
+				EAAD205C245392430004AB07 /* WishlistTableViewController.swift */,
+				EAAD20612453E4D40004AB07 /* TripInfoViewController.swift */,
 			);
 			path = Trip;
 			sourceTree = "<group>";
@@ -282,6 +321,7 @@
 				EA33B138244F7EA8005F883C /* Attraction.swift */,
 				EABE2A292450C09A00AF36E2 /* Note.swift */,
 				EAE268532452776D00FF84D7 /* Wishlist.swift */,
+				EAAD20632453F0BD0004AB07 /* Photo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				EAAD497C244E81C2004D93D0 /* PlaceViewController.swift */,
+				EAAD205E2453BA0C0004AB07 /* ImageViewController.swift */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -379,8 +420,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0497CA244B750E0051AA33 /* LaunchScreen.storyboard in Resources */,
+				EAAD2066245400E10004AB07 /* trips.jpg in Resources */,
+				EAAD2055245351730004AB07 /* traveller.jpg in Resources */,
+				EAAD2068245402A10004AB07 /* logo1.png in Resources */,
 				EA0497C7244B750E0051AA33 /* Assets.xcassets in Resources */,
+				EAAD2059245389260004AB07 /* traveller1.jpg in Resources */,
 				EA0497C5244B750A0051AA33 /* Main.storyboard in Resources */,
+				EAAD205324534FFC0004AB07 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,8 +513,11 @@
 				EAE7F4B9244C9B83009D5F67 /* RegisterViewController.swift in Sources */,
 				EA8DAF1F244DE58800B19723 /* Font.swift in Sources */,
 				EA0497C0244B750A0051AA33 /* FirstViewController.swift in Sources */,
+				EAAD205F2453BA0C0004AB07 /* ImageViewController.swift in Sources */,
 				EAE7F4BC244CAD67009D5F67 /* UIColorExtensions.swift in Sources */,
+				EAAD20642453F0BD0004AB07 /* Photo.swift in Sources */,
 				EA2DD1D8244D57EE003AD610 /* ShadowUIView.swift in Sources */,
+				EAAD2057245359B80004AB07 /* NavigationViewController.swift in Sources */,
 				EAAE676B244BD1F900E54537 /* RootViewController.swift in Sources */,
 				EAC8F84C244F4F7D0040EFE1 /* TripViewController.swift in Sources */,
 				EAAD4982244E8E2B004D93D0 /* ThirdViewController.swift in Sources */,
@@ -477,7 +526,9 @@
 				EAF7722C244E5A9C00CFBA3B /* TripTableViewCell.swift in Sources */,
 				EAAD497B244E7D66004D93D0 /* SearchTableViewCell.swift in Sources */,
 				EA8DAF21244DF11F00B19723 /* SearchTableViewController.swift in Sources */,
+				EAAD205D245392430004AB07 /* WishlistTableViewController.swift in Sources */,
 				EAE7F4C4244CD7A8009D5F67 /* User.swift in Sources */,
+				EAAD20622453E4D40004AB07 /* TripInfoViewController.swift in Sources */,
 				EABE2A2A2450C09A00AF36E2 /* Note.swift in Sources */,
 				EAE7F4C6244CEE21009D5F67 /* JSONDecoderExtensions.swift in Sources */,
 				EAAD4980244E8B66004D93D0 /* AddTripViewController.swift in Sources */,
@@ -486,6 +537,7 @@
 				EAE7F4BF244CB84B009D5F67 /* APIData.swift in Sources */,
 				EA0497BC244B750A0051AA33 /* AppDelegate.swift in Sources */,
 				EA33B139244F7EA8005F883C /* Attraction.swift in Sources */,
+				EAAD205B245390F60004AB07 /* WishlistTableViewCell.swift in Sources */,
 				EA2DD1DA244D6034003AD610 /* Trip.swift in Sources */,
 				EAA4D61D244D1D1F00B08B6C /* HomeViewController.swift in Sources */,
 				EA33B137244F558D005F883C /* AttractionViewController.swift in Sources */,

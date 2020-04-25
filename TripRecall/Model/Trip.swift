@@ -20,6 +20,7 @@ class Trip: Codable {
     var start_date: Date
     var end_date: Date
     var attractions: [Attraction]?
+    var photos: [Photo]?
     var created_ts: Date?
     var updated_ts: Date?
     

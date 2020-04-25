@@ -26,13 +26,19 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         placesClient = GMSPlacesClient.shared()
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.backgroundColor = UIColor(rgb: 0x0a173d)
+        
+//        searchBar.setImage(UIImage(named: "back"), for: .search, state: .normal)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.tintColor = UIColor.theme()
+        self.navigationItem.backBarButtonItem?.title = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +71,15 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             }
         })
         tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("nope")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        print("arey")
     }
     
     // MARK: - Table view data source

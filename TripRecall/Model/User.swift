@@ -56,4 +56,21 @@ class User: Codable {
         
         return future
     }
+    
+    func isPlaceInWishlist(place_id: String) -> Wishlist? {
+        for w in wishlists!{
+            if w.place_id == place_id {
+                return w
+            }
+        }
+        return nil
+    }
+    
+    func removeWishList(wishlist: Wishlist) {
+        wishlists = wishlists?.filter { $0 !== wishlist }
+    }
+    
+    func removeTrip(trip: Trip) {
+        trips = trips?.filter { $0 !== trip }
+    }
 }

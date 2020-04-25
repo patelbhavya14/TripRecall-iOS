@@ -11,14 +11,25 @@ import GooglePlaces
 import GoogleMaps
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
     let TOKEN: String = ""
     var user: User?
+    let locationManager = CLLocationManager()
+    
+    override init() {
+        super.init()
+        locationManager.delegate = self
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+           locationManager.requestWhenInUseAuthorization()
+        }
+        UIFont.overrideInitialize()
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UITabBar.appearance().tintColor = UIColor(red: 10/255.0, green: 23/255.0, blue: 61/255.0, alpha: 1.0)
         GMSServices.provideAPIKey("")
         GMSPlacesClient.provideAPIKey("")
         return true

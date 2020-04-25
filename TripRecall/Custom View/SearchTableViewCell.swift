@@ -18,13 +18,13 @@ class SearchTableViewCell: UITableViewCell {
         // Initialization code
         
         placeNameLabel.snp.makeConstraints { (make) in
-            make.top.left.equalTo(10)
+            make.top.left.equalTo(15)
             make.right.equalTo(0)
         }
         
         placeLocationLabel.snp.makeConstraints { (make) in
             make.top.equalTo(placeNameLabel.snp.bottom).offset(10)
-            make.left.equalTo(10)
+            make.left.equalTo(15)
             make.right.equalTo(0)
         }
     }

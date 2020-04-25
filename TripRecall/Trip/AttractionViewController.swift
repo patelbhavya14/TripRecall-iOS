@@ -42,7 +42,10 @@ class AttractionViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationItem.title = trip.trip_name
+        self.navigationItem.title = trip.trip_name
+        self.navigationController?.navigationBar.tintColor = UIColor.theme()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        
         placesClient = GMSPlacesClient.shared()
         
         tabs = trip.getDateAndDay()
@@ -53,17 +56,26 @@ class AttractionViewController: UIViewController, UITableViewDelegate, UITableVi
         addButton.applyOutlinedTheme(withScheme: containerScheme)
         addButton.setTitleColor(UIColor(rgb: 0x0a173d), for: .normal)
         addButton.setImageTintColor(UIColor(rgb: 0x0a173d), for: .normal)
+        
         setupView()
         
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         
         attractions = trip.getAttractionByDate(date: tabs[0].1)
         
         attractionTable.separatorStyle = .none
         attractionTable.showsVerticalScrollIndicator = false
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let indexPath = IndexPath(item: 0, section: 0)
+        selectedDay = tabs[indexPath.row].1
+        self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,14 +88,18 @@ class AttractionViewController: UIViewController, UITableViewDelegate, UITableVi
             addedAttraction = nil
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 
     // MARK: - Private Methods
     
     private func setupView() {
         collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(topLayoutGuide.snp.bottom).offset(10)
-            make.left.equalTo(15)
-            make.right.equalTo(-15)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
             make.height.equalTo(80)
         }
         
@@ -150,19 +166,21 @@ class AttractionViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         // Set start time label
-        cell.startTimeLabel.text = ""
         if let start_time = attraction.start_time {
             let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = .current
             dateFormatter.dateFormat = "h:mm a"
             
             let formattedString = dateFormatter.string(from: start_time)
             
             cell.startTimeLabel.text = formattedString
+            cell.startTimeButton.setImage(UIImage(named: "start-time-done"), for: .normal)
+        } else {
+            cell.startTimeLabel.text = ""
+            cell.startTimeButton.setImage(UIImage(named: "start-time"), for: .normal)
         }
         
-        // Set duration Label
-        cell.durationLabel.text = ""
-        
+        // Display place name and image
         self.getPlaceDetails(placeID: attraction.place_id) { (place, error) in
             if let place = place {
                 cell.placeNameLabel.text = place.name
@@ -184,6 +202,9 @@ class AttractionViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
         
+        // Set duration Label
+        
+        
         if let duration = attraction.duration {
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.hour, .minute]
@@ -192,9 +213,16 @@ class AttractionViewController: UIViewController, UITableViewDelegate, UITableVi
             let formattedString = formatter.string(from: TimeInterval(duration))!
             
             cell.durationLabel.text = formattedString
+            cell.durationButton.setImage(UIImage(named: "duration-done"), for: .normal)
+        } else {
+            cell.durationLabel.text = ""
+            cell.durationButton.setImage(UIImage(named: "duration"), for: .normal)
         }
             
-        
+        // Check whether attraction has a note or not
+        if let _ = attraction.note {
+            cell.noteButton.setImage(UIImage(named: "note-done"), for: .normal)
+        }
         
         // Set transport label
         cell.transportButton.setImage(nil, for: .normal)
@@ -263,6 +291,11 @@ class AttractionViewController: UIViewController, UITableViewDelegate, UITableVi
             self.present(bottomSheet, animated: true, completion: nil)
         }
         
+        cell.cardClicked = {
+            let destVC = self.storyboard?.instantiateViewController(withIdentifier: "PlaceViewController") as! PlaceViewController
+            destVC.place_id = attraction.place_id
+            self.navigationController?.pushViewController(destVC, animated: true)
+        }
         return cell
     }
     
@@ -294,6 +327,8 @@ extension AttractionViewController: UICollectionViewDelegateFlowLayout, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
         
+        cell.backgroundColor = UIColor(rgb: 0x0a173d)
+        cell.tintColor = .white
         cell.isSelectable = true
         cell.cornerRadius = 8
         cell.setShadowElevation(ShadowElevation(rawValue: 6), for: .selected)
@@ -328,6 +363,16 @@ class CustomCell: MDCCardCollectionCell {
         
         contentView.addSubview(day)
         contentView.addSubview(date)
+        
+        day.textColor = .white
+        date.textColor = .white
+        day.font = UIFont.boldSystemFont(ofSize: 16.0)
+        date.font = UIFont.systemFont(ofSize: 14.0)
+        
+//        contentView.snp.makeConstraints { (make) in
+//            make.left.equalTo(5)
+//            make.right.equalTo(-5)
+//        }
         
         day.snp.makeConstraints { (make) in
             make.top.equalTo(5)

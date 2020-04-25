@@ -35,6 +35,11 @@ class SecondViewController: UIViewController , UITableViewDelegate, UITableViewD
         
         placesClient = GMSPlacesClient.shared()
         
+        // Fit topview image
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
         setupView()
         
 //        tabBar.frame = view.bounds
@@ -70,6 +75,8 @@ class SecondViewController: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tripTableView.reloadData()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = false
     }
@@ -198,19 +205,18 @@ class SecondViewController: UIViewController , UITableViewDelegate, UITableViewD
             }
         }
         
+        cell.cardClicked = {
+            let destVC = self.storyboard?.instantiateViewController(withIdentifier: "TripInfoViewController") as! TripInfoViewController
+            destVC.trip = trip
+            destVC.tabNo = 1
+            destVC.placeImage = cell.cardImage.image
+            self.navigationController?.pushViewController(destVC, animated: true)        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedTrip = trips[indexPath.row]
-        let destVC = self.storyboard?.instantiateViewController(withIdentifier: "AttractionViewController") as! AttractionViewController
-        destVC.trip = selectedTrip
-        destVC.tabNo = 1
-        self.navigationController?.pushViewController(destVC, animated: true)
     }
     
     // MARK: - Tab bar delegate

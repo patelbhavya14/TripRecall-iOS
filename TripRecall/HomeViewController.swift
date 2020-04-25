@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class HomeViewController: UITabBarController {
-
+    
+    var placesClient: GMSPlacesClient!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+    
         // Do any additional setup after loading the view.
     }
     
 
+    
     /*
     // MARK: - Navigation
 

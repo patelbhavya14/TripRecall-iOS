@@ -12,6 +12,7 @@ import SnapKit
 import MaterialComponents.MaterialButtons_Theming
 import MaterialComponents.MDCFilledTextField
 import MaterialComponents.MDCOutlinedTextField
+import MaterialComponents.MaterialSnackbar
 
 class AddTripViewController: UIViewController, UITextFieldDelegate {
     var place: Place!
@@ -29,12 +30,15 @@ class AddTripViewController: UIViewController, UITextFieldDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    // UI Components
+    let message = MDCSnackbarMessage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let containerScheme = MDCContainerScheme()
         addTripButton.applyContainedTheme(withScheme: containerScheme)
-        addTripButton.backgroundColor = UIColor(rgb: 0x0a173d)
+        addTripButton.backgroundColor = UIColor.theme()
         
         setupView()
         
@@ -197,11 +201,21 @@ class AddTripViewController: UIViewController, UITextFieldDelegate {
             addTrip(route: "/v1/trip", body: jsonData) { (status, error) in
                 if let _ = status {
                     DispatchQueue.main.async {
+                        self.message.text = "Trip created successfully"
+                        MDCSnackbarManager.show(self.message)
                         self.navigationController?.popToRootViewController(animated: true)
                     }
                 } else if let e = error as? ResponseErrors {
+                    DispatchQueue.main.async {
+                        self.message.text = e.errors[0].msg
+                        MDCSnackbarManager.show(self.message)
+                    }
                     print(e)
                 } else {
+                    DispatchQueue.main.async {
+                        self.message.text = "Trip could not be added"
+                        MDCSnackbarManager.show(self.message)
+                    }
                     print("fatal error")
                 }
             }

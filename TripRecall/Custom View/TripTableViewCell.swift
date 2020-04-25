@@ -15,11 +15,16 @@ class TripTableViewCell: UITableViewCell {
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cardImage: UIImageView!
     
-    var tripCardPressed: (() -> ()) = {}
+    var cardClicked: (() -> ()) = {}
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // Tap gesture on card
+        let tap = UITapGestureRecognizer(target: self, action: #selector(cardClick(tapGesture:)))
+        cellView.addGestureRecognizer(tap)
+        cellView.isUserInteractionEnabled = true
         
         cardImage.translatesAutoresizingMaskIntoConstraints = false
         cardImage.contentMode = .scaleAspectFill
@@ -61,4 +66,7 @@ class TripTableViewCell: UITableViewCell {
     
     // MARK: - Actions
 
+    @objc func cardClick(tapGesture:UITapGestureRecognizer){
+        cardClicked()
+    }
 }
