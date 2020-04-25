@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import MaterialComponents.MaterialButtons_Theming
+import MaterialComponents.MaterialSnackbar
 
 class RootViewController: UIViewController {
     @IBOutlet weak var emailText: MDCOutlinedTextField!
@@ -24,12 +25,18 @@ class RootViewController: UIViewController {
     let alert = UIAlertController(title: nil, message: "Please wait", preferredStyle: .alert)
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    let message = MDCSnackbarMessage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        imageView.image = UIImage(named: "plane-bg")
+        // Fit topview image
+        imageView.image = UIImage(named: "logo.png")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         
         headingView.layer.masksToBounds = false
         headingView.layer.cornerRadius = 20
@@ -56,14 +63,22 @@ class RootViewController: UIViewController {
         
         setupView()
         
-        if let _ = UserDefaults.standard.value(forKey: "user_auth_token") as? String {
+        if let _ = UserDefaults.standard.value(forKey: "user_auth_token") {
             displayLoader(msg: "Please wait")
-            fetchUserDetail()
-            dismissLoader()
-            goToHomePage()
+            fetchUserDetail { (status, error) in
+                if let _ = status {
+                    DispatchQueue.main.async {
+                        self.dismissLoader(status: "success")
+                    }
+                }
+            }
         }
     }
         
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Private Methods
 
     private func displayLoader(msg: String) {
@@ -76,8 +91,15 @@ class RootViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func dismissLoader() {
-        dismiss(animated: true, completion: nil)
+    private func dismissLoader(status: String) {
+        dismiss(animated: true, completion: {
+            if status == "success" {
+                self.goToHomePage()
+            } else {
+                self.message.text = "Invalid Credential"
+                MDCSnackbarManager.show(self.message)
+            }
+        })
     }
     
     private func setupView() {
@@ -164,23 +186,26 @@ class RootViewController: UIViewController {
         group.wait()
     }
     
-    private func fetchUserDetail() {
+    private func fetchUserDetail(completion: @escaping (String?, Any?) -> Void) {
         let group = DispatchGroup()
         group.enter()
         getDataFromAPI(route: "/v1/user/self", method: "GET", access: "private", body: nil) { (result, error) in
+            
             if let result = result {
                 do {
                     let jsonDecoder = JSONDecoder()
                     jsonDecoder.setDateFormat()
                     
                     self.appDelegate.user = try jsonDecoder.decode(User.self, from: result)
-                    print("Name : \(self.appDelegate.user!.username ?? "")")
-                    print("Rating : \(self.appDelegate.user!.email)")
+                    print("here10")
+                    completion("success", nil)
                 }
                 catch {
+                    completion(nil, error)
                     print("ERROR \(error)")
                 }
             } else if let error = error {
+                completion(nil, error)
                 print(error)
             }
             group.leave()
@@ -209,19 +234,30 @@ class RootViewController: UIViewController {
         
         let user = User(email: emailText.text ?? "")
         user.password = passwordText.text
-        
         let jsonEncoder = JSONEncoder()
         do {
             let jsonData = try jsonEncoder.encode(user)
             displayLoader(msg: "Logging in...")
             authentication(route: "/v1/user/auth", body: jsonData)
-            if let _ = UserDefaults.standard.value(forKey: "user_auth_token") as? String {
-                self.fetchUserDetail()
-                dismissLoader()
-                goToHomePage()
+            if let _ = UserDefaults.standard.value(forKey: "user_auth_token") {
+                fetchUserDetail { (status, error) in
+                    if let _ = status {
+                        DispatchQueue.main.async {
+                            self.dismissLoader(status: "success")
+                        }
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.dismissLoader(status: "failure")
+                }
             }
         }
         catch {
+            DispatchQueue.main.async {
+                print("here4")
+                self.dismissLoader(status: "failure")
+            }
         }
     }
     

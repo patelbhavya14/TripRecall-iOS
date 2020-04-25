@@ -36,22 +36,41 @@ class TripViewController: UIViewController {
         let containerScheme = MDCContainerScheme()
         saveButton.applyTextTheme(withScheme: containerScheme)
         saveButton.setTitleColor(UIColor.white, for: .normal)
+        saveButton.setTitle("Save", for: .normal)
         
         cancelButton.applyTextTheme(withScheme: containerScheme)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
-        
-        print(indexRow.row)
+        cancelButton.setTitle("Cancel", for: .normal)
         
         transportView.isHidden = true
         if action == "duration" {
+            
+            if let duration = attraction.duration {
+                saveButton.setTitle("Update", for: .normal)
+                durationPicker.countDownDuration = TimeInterval(duration)
+            }
+            
             durationPicker.datePickerMode = .countDownTimer
         }  else if action == "start_time" {
+            
+            if let start_time = attraction.start_time {
+                saveButton.setTitle("Update", for: .normal)
+                durationPicker.setDate(start_time, animated: true)
+            }
+            
             durationPicker.datePickerMode = .time
         } else {
-            selectedButton = Mode.car
-            transportButtons[0].setImage(UIImage(named: "\(selectedButton!.rawValue)-select"), for: .normal)
-            durationPicker.datePickerMode = .countDownTimer
             transportView.isHidden = false
+            if let transport = attraction.transport {
+                saveButton.setTitle("Update", for: .normal)
+                selectedButton = transport.mode
+                transportButtons[Mode.allValues.firstIndex(of: selectedButton!) ?? 0].setImage(UIImage(named: "\(selectedButton!.rawValue)-select"), for: .normal)
+            } else {
+                selectedButton = Mode.car
+                transportButtons[0].setImage(UIImage(named: "\(selectedButton!.rawValue)-select"), for: .normal)
+                durationPicker.datePickerMode = .countDownTimer
+            }
+            
         }
         
         cancelButton.snp.makeConstraints { (make) in
@@ -124,25 +143,27 @@ class TripViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func saveButtonAction(_ sender: Any) {
-
-        print(Int(durationPicker.countDownDuration))
-        let jsonEncoder = JSONEncoder()
+        let para:NSMutableDictionary = NSMutableDictionary()
         
         if action == "duration" {
             attraction.duration = Int(durationPicker.countDownDuration)
-            jsonEncoder.setDateFormat()
+            para.setValue(Int(durationPicker.countDownDuration), forKey: "duration")
         } else if action == "start_time" {
             attraction.start_time = durationPicker.date
-            jsonEncoder.setEpochDateFormat()
+            para.setValue(durationPicker.date.timeIntervalSince1970, forKey: "start_time")
         } else {
             let transport = Transport(mode: selectedButton ?? Mode.car, time: Int(durationPicker.countDownDuration))
             attraction.transport = transport
+            let para1:NSMutableDictionary = NSMutableDictionary()
+            para1.setValue(selectedButton!.rawValue, forKey: "mode")
+            para1.setValue(Int(durationPicker.countDownDuration), forKey: "time")
+            para.setValue(para1, forKey: "transport")
         }
         
         
         
         do {
-            let jsonData = try jsonEncoder.encode(attraction)
+           let jsonData = try JSONSerialization.data(withJSONObject: para, options: JSONSerialization.WritingOptions())
             let jsonString = String(data: jsonData, encoding: .utf8)!
             print(jsonString)
             
@@ -152,7 +173,7 @@ class TripViewController: UIViewController {
                     DispatchQueue.main.async {
                         if let tabBar = self.presentingViewController as? UITabBarController {
                             let homeNavigationViewController = tabBar.viewControllers![self.tabNo] as? UINavigationController
-                            let attractionViewController = homeNavigationViewController?.viewControllers[1] as! AttractionViewController
+                            let attractionViewController = homeNavigationViewController?.viewControllers[2] as! AttractionViewController
                             attractionViewController.attractions[self.indexRow.row] = attraction
                             attractionViewController.attractionTable.reloadRows(at: [self.indexRow], with: .none)
                         }

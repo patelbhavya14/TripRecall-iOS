@@ -26,10 +26,16 @@ class AttractionTableViewCell: UITableViewCell {
     var durationButtonPressed: (() -> ()) = {}
     var noteButtonPressed: (() -> ()) = {}
     var transportButtonPressed: (() -> ()) = {}
+    var cardClicked: (() -> ()) = {}
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // Tap gesture on card
+        let tap = UITapGestureRecognizer(target: self, action: #selector(cardClick(tapGesture:)))
+        placeCard.addGestureRecognizer(tap)
+        placeCard.isUserInteractionEnabled = true
         
         cardImage.translatesAutoresizingMaskIntoConstraints = false
         cardImage.contentMode = .scaleAspectFill
@@ -84,12 +90,12 @@ class AttractionTableViewCell: UITableViewCell {
         }
         
         durationButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-50)
+            make.right.equalTo(-70)
             make.top.equalTo(placeCard.snp.bottom).offset(10)
         }
         
         startTimeButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-90)
+            make.right.equalTo(-130)
             make.top.equalTo(placeCard.snp.bottom).offset(10)
         }
         
@@ -122,6 +128,10 @@ class AttractionTableViewCell: UITableViewCell {
     
     @IBAction func transportButtonAction(_ sender: MDCButton) {
         transportButtonPressed()
+    }
+    
+    @objc func cardClick(tapGesture:UITapGestureRecognizer){
+        cardClicked()
     }
     
     

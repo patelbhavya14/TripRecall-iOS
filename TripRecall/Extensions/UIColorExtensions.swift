@@ -19,7 +19,7 @@ extension UIColor {
         )
     }
     
-    func theme() -> UIColor {
+    static func theme() -> UIColor {
         return UIColor(rgb: 0x0a173d)
     }
 }

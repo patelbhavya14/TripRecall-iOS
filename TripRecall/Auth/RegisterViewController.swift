@@ -10,6 +10,7 @@ import UIKit
 import MaterialComponents.MaterialTabs
 import SnapKit
 import MaterialComponents.MaterialButtons_Theming
+import MaterialComponents.MaterialSnackbar
 
 class RegisterViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
@@ -23,15 +24,23 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var signUpButton: MDCButton!
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var loginButton: MDCButton!
+    let alert = UIAlertController(title: nil, message: "Please wait", preferredStyle: .alert)
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    let message = MDCSnackbarMessage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        imageView.image = UIImage(named: "plane-bg")
-                
+        
+        // Fit topview image
+        imageView.image = UIImage(named: "logo.png")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
         headingView.layer.masksToBounds = false
         headingView.layer.cornerRadius = 20
                 
@@ -61,8 +70,33 @@ class RegisterViewController: UIViewController {
 
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Private Methods
 
+    private func displayLoader(msg: String) {
+        alert.message = msg
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating()
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func dismissLoader(status: String) {
+        dismiss(animated: true, completion: {
+            if status == "success" {
+                self.goToHomePage()
+            } else {
+                self.message.text = "Registration failed"
+                MDCSnackbarManager.show(self.message)
+            }
+        })
+    }
+    
     private func setupView() {
         
         imageView.snp.makeConstraints() { (make) in
@@ -154,7 +188,7 @@ class RegisterViewController: UIViewController {
         group.wait()
     }
     
-    private func fetchUserDetail() {
+    private func fetchUserDetail(completion: @escaping (String?, Any?) -> Void) {
         let group = DispatchGroup()
         group.enter()
         getDataFromAPI(route: "/v1/user/self", method: "GET", access: "private", body: nil) { (result, error) in
@@ -164,13 +198,14 @@ class RegisterViewController: UIViewController {
                     jsonDecoder.setDateFormat()
                     
                     self.appDelegate.user = try jsonDecoder.decode(User.self, from: result)
-                    print("Name : \(self.appDelegate.user!.username ?? "")")
-                    print("Rating : \(self.appDelegate.user!.email)")
+                    completion("success", nil)
                 }
                 catch {
+                    completion(nil, error)
                     print("ERROR \(error)")
                 }
             } else if let error = error {
+                completion(nil, error)
                 print(error)
             }
             group.leave()
@@ -206,8 +241,19 @@ class RegisterViewController: UIViewController {
         do {
             let jsonData = try jsonEncoder.encode(user)
             authentication(route: "/v1/user", body: jsonData)
-            fetchUserDetail()
-            goToHomePage()
+            if let _ = UserDefaults.standard.value(forKey: "user_auth_token") {
+                fetchUserDetail { (status, error) in
+                    if let _ = status {
+                        DispatchQueue.main.async {
+                            self.dismissLoader(status: "success")
+                        }
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.dismissLoader(status: "failure")
+                }
+            }
         }
         catch {
         }

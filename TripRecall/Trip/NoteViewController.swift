@@ -22,6 +22,11 @@ class NoteViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.title = "Note"
+        self.navigationController?.navigationBar.tintColor = UIColor.theme()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        
+        textView.becomeFirstResponder()
+        
         if let _ = attraction.note {
             let barButton = UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(updateNote))
             self.navigationItem.rightBarButtonItem  = barButton
@@ -45,6 +50,10 @@ class NoteViewController: UIViewController {
         }
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     // MARK: - Private Methods

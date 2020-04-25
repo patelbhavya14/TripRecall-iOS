@@ -23,4 +23,8 @@ target 'TripRecall' do
   pod 'MaterialComponents/Cards'
   pod 'MaterialComponents/BottomSheet'
   pod 'FSCalendar'
+  pod 'MaterialComponents/Snackbar+TypographyThemer'
+  pod 'MaterialComponents/BottomNavigation'
+  pod 'AWSS3'
+  pod 'AWSCore'
 end

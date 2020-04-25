@@ -1,4 +1,7 @@
 PODS:
+  - AWSCore (2.13.2)
+  - AWSS3 (2.13.2):
+    - AWSCore (= 2.13.2)
   - FSCalendar (2.8.1)
   - GoogleMaps (3.8.0):
     - GoogleMaps/Maps (= 3.8.0)
@@ -7,14 +10,14 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (3.8.0):
     - GoogleMaps/Base (= 3.8.0)
-  - MaterialComponents/ActivityIndicator (108.1.0):
+  - MaterialComponents/ActivityIndicator (109.0.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/Application
     - MDFInternationalization
     - MotionAnimator (~> 2.0)
-  - MaterialComponents/AnimationTiming (108.1.0)
-  - MaterialComponents/Availability (108.1.0)
-  - MaterialComponents/BottomNavigation (108.1.0):
+  - MaterialComponents/AnimationTiming (109.0.0)
+  - MaterialComponents/Availability (109.0.0)
+  - MaterialComponents/BottomNavigation (109.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
@@ -25,7 +28,7 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/BottomSheet (108.1.0):
+  - MaterialComponents/BottomSheet (109.0.0):
     - MaterialComponents/Elevation
     - MaterialComponents/private/KeyboardWatcher
     - MaterialComponents/private/Math
@@ -33,7 +36,7 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/ShapeLibrary
     - MaterialComponents/Shapes
-  - MaterialComponents/Buttons (108.1.0):
+  - MaterialComponents/Buttons (109.0.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
@@ -44,23 +47,23 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - "MaterialComponents/Buttons+ColorThemer (108.1.0)":
+  - "MaterialComponents/Buttons+ColorThemer (109.0.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Color
-  - "MaterialComponents/Buttons+ShapeThemer (108.1.0)":
+  - "MaterialComponents/Buttons+ShapeThemer (109.0.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Shape
-  - "MaterialComponents/Buttons+Theming (108.1.0)":
+  - "MaterialComponents/Buttons+Theming (109.0.0)":
     - MaterialComponents/Buttons
     - "MaterialComponents/Buttons+ColorThemer"
     - "MaterialComponents/Buttons+ShapeThemer"
     - "MaterialComponents/Buttons+TypographyThemer"
     - MaterialComponents/schemes/Container
     - MaterialComponents/ShadowElevations
-  - "MaterialComponents/Buttons+TypographyThemer (108.1.0)":
+  - "MaterialComponents/Buttons+TypographyThemer (109.0.0)":
     - MaterialComponents/Buttons
     - MaterialComponents/schemes/Typography
-  - MaterialComponents/Cards (108.1.0):
+  - MaterialComponents/Cards (109.0.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Icons/ic_check_circle
@@ -68,7 +71,7 @@ PODS:
     - MaterialComponents/Ripple
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Shapes
-  - MaterialComponents/Dialogs (108.1.0):
+  - MaterialComponents/Dialogs (109.0.0):
     - MaterialComponents/Buttons
     - MaterialComponents/Elevation
     - MaterialComponents/private/KeyboardWatcher
@@ -77,74 +80,94 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Elevation (108.1.0):
+  - MaterialComponents/Elevation (109.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (108.1.0):
+  - MaterialComponents/Ink (109.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (108.1.0)
-  - MaterialComponents/private/Application (108.1.0)
-  - MaterialComponents/private/Color (108.1.0):
+  - MaterialComponents/OverlayWindow (109.0.0):
     - MaterialComponents/Availability
-  - MaterialComponents/private/Icons/Base (108.1.0)
-  - MaterialComponents/private/Icons/ic_check_circle (108.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/KeyboardWatcher (108.1.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (108.1.0)
-  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (108.1.0)":
+  - MaterialComponents/Palettes (109.0.0)
+  - MaterialComponents/private/Application (109.0.0)
+  - MaterialComponents/private/Color (109.0.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Icons/Base (109.0.0)
+  - MaterialComponents/private/Icons/ic_check_circle (109.0.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/KeyboardWatcher (109.0.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (109.0.0)
+  - MaterialComponents/private/Overlay (109.0.0)
+  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (109.0.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+FilledStyle (108.1.0)":
+  - "MaterialComponents/private/TextControlsPrivate+FilledStyle (109.0.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (108.1.0)":
+  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (109.0.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+Shared (108.1.0)":
+  - "MaterialComponents/private/TextControlsPrivate+Shared (109.0.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Math
     - "MaterialComponents/TextControls+Enums"
-  - MaterialComponents/Ripple (108.1.0):
+  - MaterialComponents/Ripple (109.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/schemes/Color (108.1.0):
+  - MaterialComponents/schemes/Color (109.0.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
-  - MaterialComponents/schemes/Container (108.1.0):
+  - MaterialComponents/schemes/Container (109.0.0):
     - MaterialComponents/schemes/Color
     - MaterialComponents/schemes/Shape
     - MaterialComponents/schemes/Typography
-  - MaterialComponents/schemes/Shape (108.1.0):
+  - MaterialComponents/schemes/Shape (109.0.0):
     - MaterialComponents/ShapeLibrary
     - MaterialComponents/Shapes
-  - MaterialComponents/schemes/Typography (108.1.0):
+  - MaterialComponents/schemes/Typography (109.0.0):
     - "MaterialComponents/schemes/Typography+BasicFontScheme"
     - "MaterialComponents/schemes/Typography+Scheming"
     - MaterialComponents/Typography
-  - "MaterialComponents/schemes/Typography+BasicFontScheme (108.1.0)"
-  - "MaterialComponents/schemes/Typography+Scheming (108.1.0)"
-  - MaterialComponents/ShadowElevations (108.1.0)
-  - MaterialComponents/ShadowLayer (108.1.0):
+  - "MaterialComponents/schemes/Typography+BasicFontScheme (109.0.0)"
+  - "MaterialComponents/schemes/Typography+Scheming (109.0.0)"
+  - MaterialComponents/ShadowElevations (109.0.0)
+  - MaterialComponents/ShadowLayer (109.0.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/ShapeLibrary (108.1.0):
+  - MaterialComponents/ShapeLibrary (109.0.0):
     - MaterialComponents/private/Math
     - MaterialComponents/Shapes
-  - MaterialComponents/Shapes (108.1.0):
+  - MaterialComponents/Shapes (109.0.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/Tabs (108.1.0):
+  - MaterialComponents/Snackbar (109.0.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/Buttons
+    - MaterialComponents/Elevation
+    - MaterialComponents/OverlayWindow
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Overlay
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+  - "MaterialComponents/Snackbar+TypographyThemer (109.0.0)":
+    - MaterialComponents/schemes/Typography
+    - MaterialComponents/Snackbar
+  - MaterialComponents/Tabs (109.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
@@ -155,44 +178,44 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - "MaterialComponents/TextControls+BaseTextAreas (108.1.0)":
+  - "MaterialComponents/TextControls+BaseTextAreas (109.0.0)":
     - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
     - "MaterialComponents/private/TextControlsPrivate+Shared"
     - MDFInternationalization
-  - "MaterialComponents/TextControls+BaseTextFields (108.1.0)":
+  - "MaterialComponents/TextControls+BaseTextFields (109.0.0)":
     - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
     - "MaterialComponents/private/TextControlsPrivate+Shared"
     - MDFInternationalization
-  - "MaterialComponents/TextControls+Enums (108.1.0)"
-  - "MaterialComponents/TextControls+FilledTextAreas (108.1.0)":
+  - "MaterialComponents/TextControls+Enums (109.0.0)"
+  - "MaterialComponents/TextControls+FilledTextAreas (109.0.0)":
     - MaterialComponents/Availability
     - "MaterialComponents/private/TextControlsPrivate+FilledStyle"
     - "MaterialComponents/TextControls+BaseTextAreas"
-  - "MaterialComponents/TextControls+FilledTextAreasTheming (108.1.0)":
+  - "MaterialComponents/TextControls+FilledTextAreasTheming (109.0.0)":
     - MaterialComponents/schemes/Container
     - "MaterialComponents/TextControls+FilledTextAreas"
-  - "MaterialComponents/TextControls+FilledTextFields (108.1.0)":
+  - "MaterialComponents/TextControls+FilledTextFields (109.0.0)":
     - MaterialComponents/Availability
     - "MaterialComponents/private/TextControlsPrivate+FilledStyle"
     - "MaterialComponents/TextControls+BaseTextFields"
-  - "MaterialComponents/TextControls+FilledTextFieldsTheming (108.1.0)":
+  - "MaterialComponents/TextControls+FilledTextFieldsTheming (109.0.0)":
     - MaterialComponents/schemes/Container
     - "MaterialComponents/TextControls+FilledTextFields"
-  - "MaterialComponents/TextControls+OutlinedTextAreas (108.1.0)":
+  - "MaterialComponents/TextControls+OutlinedTextAreas (109.0.0)":
     - MaterialComponents/Availability
     - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
     - "MaterialComponents/TextControls+BaseTextAreas"
-  - "MaterialComponents/TextControls+OutlinedTextAreasTheming (108.1.0)":
+  - "MaterialComponents/TextControls+OutlinedTextAreasTheming (109.0.0)":
     - MaterialComponents/schemes/Container
     - "MaterialComponents/TextControls+OutlinedTextAreas"
-  - "MaterialComponents/TextControls+OutlinedTextFields (108.1.0)":
+  - "MaterialComponents/TextControls+OutlinedTextFields (109.0.0)":
     - MaterialComponents/Availability
     - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
     - "MaterialComponents/TextControls+BaseTextFields"
-  - "MaterialComponents/TextControls+OutlinedTextFieldsTheming (108.1.0)":
+  - "MaterialComponents/TextControls+OutlinedTextFieldsTheming (109.0.0)":
     - MaterialComponents/schemes/Container
     - "MaterialComponents/TextControls+OutlinedTextFields"
-  - MaterialComponents/Typography (108.1.0):
+  - MaterialComponents/Typography (109.0.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -203,6 +226,8 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - AWSCore
+  - AWSS3
   - FSCalendar
   - GoogleMaps
   - GooglePlaces
@@ -213,6 +238,7 @@ DEPENDENCIES:
   - MaterialComponents/Cards
   - MaterialComponents/Dialogs
   - MaterialComponents/ShadowElevations
+  - "MaterialComponents/Snackbar+TypographyThemer"
   - MaterialComponents/Tabs
   - "MaterialComponents/TextControls+FilledTextAreasTheming"
   - "MaterialComponents/TextControls+FilledTextFieldsTheming"
@@ -222,6 +248,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - AWSCore
+    - AWSS3
     - FSCalendar
     - GoogleMaps
     - GooglePlaces
@@ -233,16 +261,18 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
+  AWSCore: 8e878a5b1b99cdf3d7df0c1c86be0bfcd6294c11
+  AWSS3: 8eb4011854de8bee0fbbe25803a29f69cca31256
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   GoogleMaps: 7c8d66d70e4e8c300f43a7219d8fdaad7b325a9a
   GooglePlaces: d5f70c3e9e427964fdeca1301a665d276ccd8754
-  MaterialComponents: d1c85bdf01caed6b6e11e78731e71e2d55d331da
+  MaterialComponents: efea7f96438838624ea3a4fcc881bfd6b3b0bb7b
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: dfd20e25c8a3e55c10e9b77399ebc85bcfbf8503
+PODFILE CHECKSUM: a17bd7ab06dfef5125c881a2bd9b92f80d3484bd
 
 COCOAPODS: 1.9.1
