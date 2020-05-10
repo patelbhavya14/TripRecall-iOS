@@ -16,4 +16,4 @@
 - Install CocoaPods using the instruction provided [here](https://cocoapods.org/)
 - Clone the repository in local machine
 - From terminal run `pod install`
-- Import `TripRecall.xcworkspace` in Xcode and r
+- Import `TripRecall.xcworkspace` in Xcode and run it
