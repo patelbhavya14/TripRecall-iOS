@@ -11,7 +11,7 @@ import UIKit
 
 func getDataFromAPI(route: String, method: String, access: String, body: Data?, completion: @escaping (Data?, ResponseErrors?) -> Void) {
 
-    let url = URL(string: "https://triprecall.texoftgen.me"+route)!
+    let url = URL(string: "http://localhost:5000"+route)!
     var request = URLRequest(url: url)
     
     request.httpMethod = method
